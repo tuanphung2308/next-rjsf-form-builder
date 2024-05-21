@@ -85,6 +85,6 @@ export default function SelectWidget<
                     })}
                 </SelectGroup>
             </SelectContent>
-        </Select> : <FancyMultiSelect multiple items={enumOptions}></FancyMultiSelect>
+        </Select> : <FancyMultiSelect multiple items={enumOptions} selected={value}></FancyMultiSelect>
     );
 }

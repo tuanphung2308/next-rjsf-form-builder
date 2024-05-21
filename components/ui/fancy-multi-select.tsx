@@ -11,25 +11,28 @@ export type FancySelectItem = Record<"value" | "label", string>;
 
 interface FancyMultiSelectInterface {
   multiple: boolean,
-  items: FancySelectItem[] | undefined
+  items: FancySelectItem[] | undefined,
+  selected: string[]
 }
 
-export function FancyMultiSelect({multiple, items}: Readonly<FancyMultiSelectInterface>): React.JSX.Element {
+export function FancyMultiSelect({multiple, items, selected}: Readonly<FancyMultiSelectInterface>): React.JSX.Element {
+  const initialSelectedItems = items?.filter(item => selected.includes(item.value)) ?? [];
+
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<FancySelectItem[]>([]);
+  const [selectedItems, setSelectedItems] = React.useState<FancySelectItem[]>(initialSelectedItems);
   const [inputValue, setInputValue] = React.useState("");
 
   const handleUnselect = React.useCallback((framework: FancySelectItem) => {
-    setSelected(prev => prev.filter(s => s.value !== framework.value));
-  }, [setSelected]);
+    setSelectedItems(prev => prev.filter(s => s.value !== framework.value));
+  }, [setSelectedItems]);
 
   const handleKeyDown = React.useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     const input = inputRef.current
     if (input) {
       if (e.key === "Delete" || e.key === "Backspace") {
         if (input.value === "") {
-          setSelected(prev => {
+          setSelectedItems(prev => {
             const newSelected = [...prev];
             newSelected.pop();
             return newSelected;
@@ -41,11 +44,9 @@ export function FancyMultiSelect({multiple, items}: Readonly<FancyMultiSelectInt
         input.blur();
       }
     }
-  }, [inputRef.current, setSelected]);
+  }, [inputRef.current, setSelectedItems]);
 
-  const selectables = items?.filter(framework => !selected.includes(framework)) ?? [];
-  console.log(selectables);
-  console.log(selected);
+  const selectables = items?.filter(framework => !selectedItems.includes(framework)) ?? [];
 
   return (
     <Command onKeyDown={handleKeyDown} className="overflow-visible bg-transparent">
@@ -53,7 +54,7 @@ export function FancyMultiSelect({multiple, items}: Readonly<FancyMultiSelectInt
         className="group border border-input px-3 py-2 text-sm ring-offset-background rounded-md focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
       >
         <div className="flex gap-1 flex-wrap">
-          {selected.map((item) => {
+          {selectedItems.map((item) => {
             return (
               <Badge key={item.value} variant="secondary">
                 {item.label}
@@ -104,10 +105,10 @@ export function FancyMultiSelect({multiple, items}: Readonly<FancyMultiSelectInt
                       onSelect={() => {
                         if (multiple) {
                           setInputValue("")
-                          setSelected(prev => [...prev, item])
+                          setSelectedItems(prev => [...prev, item])
                         } else {
                           setInputValue("")
-                          setSelected([item])
+                          setSelectedItems([item])
                         }
                       }}
                       className={"cursor-pointer"}
