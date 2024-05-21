@@ -61,12 +61,12 @@ export default function SelectWidget<
     console.log(value);
 
     return (
-        <Select>
+        <Select value={value} onValueChange={onChange}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder={placeholder}/>
             </SelectTrigger>
             <SelectContent>
-                <SelectGroup defaultValue={value}>
+                <SelectGroup>
                     {(enumOptions as any).map(({value, label}: any, i: number) => {
                         const disabled: any =
                             Array.isArray(enumDisabled) &&
