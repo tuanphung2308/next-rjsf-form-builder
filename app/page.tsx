@@ -53,7 +53,7 @@ import {
 import React from "react";
 import {AppState, useStore} from "@/store";
 import {ResetIcon} from "@radix-ui/react-icons";
-import Samples from "@/components/samples";
+import ToggleSamples from "@/components/toggle-samples";
 
 const selector = (state: AppState) => ({
     schema: state.schema,
@@ -87,7 +87,7 @@ export default function Dashboard() {
                                     <Button size="sm">Save Product</Button>
                                 </div>
                             </div>
-                            <Samples/>
+                            <ToggleSamples/>
                             <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
                                 <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
                                     <Card x-chunk="dashboard-07-chunk-1">

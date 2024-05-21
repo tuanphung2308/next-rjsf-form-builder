@@ -9,7 +9,8 @@ import {
   StrictRJSFSchema,
   WidgetProps,
 } from "@rjsf/utils"
-import { FocusEvent } from "react"
+import {FocusEvent} from "react"
+import {Checkbox} from "@/components/ui/checkbox";
 
 export default function CheckboxWidget<
   T = any,
@@ -43,11 +44,11 @@ export default function CheckboxWidget<
     F
   >("DescriptionFieldTemplate", registry, options)
 
-  const _onChange = ({ target: { checked } }: FocusEvent<HTMLInputElement>) =>
+  const _onChange = ({target: {checked}}: FocusEvent<HTMLInputElement>) =>
     onChange(checked)
-  const _onBlur = ({ target: { checked } }: FocusEvent<HTMLInputElement>) =>
+  const _onBlur = ({target: {checked}}: FocusEvent<HTMLInputElement>) =>
     onBlur(id, checked)
-  const _onFocus = ({ target: { checked } }: FocusEvent<HTMLInputElement>) =>
+  const _onFocus = ({target: {checked}}: FocusEvent<HTMLInputElement>) =>
     onFocus(id, checked)
 
   const description = options.description || schema.description
@@ -67,22 +68,22 @@ export default function CheckboxWidget<
           registry={registry}
         />
       )}
-      <label className="mt-4 block">
-        <input
-          id={id}
-          name={id}
-          type="checkbox"
-          checked={typeof value === "undefined" ? false : value}
-          required={required}
-          disabled={disabled || readonly}
-          autoFocus={autofocus}
-          onChange={_onChange}
-          onBlur={_onBlur}
-          onFocus={_onFocus}
-          className="form-checkbox text-primary"
+      <div className="flex items-center space-x-2">
+        <Checkbox id={id}
+                  name={id}
+                  required={required}
+                  disabled={disabled || readonly}
+                  autoFocus={autofocus}
+                  onChange={onChange}
+                  defaultChecked={typeof value !== "undefined"}
         />
-        <span className="ml-2">{labelValue(label, hideLabel || !label)}</span>
-      </label>
+        <label
+          htmlFor={id}
+          className="form-checkbox text-primary"
+        >
+          {labelValue(label, hideLabel || !label)}
+        </label>
+      </div>
     </div>
   )
 }
