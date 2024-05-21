@@ -17,6 +17,7 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select";
+import {FancyMultiSelect} from "@/components/ui/fancy-multi-select";
 
 export default function SelectWidget<
     T = any,
@@ -58,9 +59,9 @@ export default function SelectWidget<
         enumOptions,
         multiple,
     )
-    console.log(value);
+    console.log(multiple);
 
-    return (
+    return ( !multiple ?
         <Select value={value} onValueChange={onChange}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder={placeholder}/>
@@ -84,6 +85,6 @@ export default function SelectWidget<
                     })}
                 </SelectGroup>
             </SelectContent>
-        </Select>
+        </Select> : <FancyMultiSelect multiple items={enumOptions}></FancyMultiSelect>
     );
 }
