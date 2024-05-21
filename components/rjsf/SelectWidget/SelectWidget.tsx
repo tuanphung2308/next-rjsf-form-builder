@@ -59,7 +59,6 @@ export default function SelectWidget<
         enumOptions,
         multiple,
     )
-    console.log(multiple);
 
     return ( !multiple ?
         <Select value={value} onValueChange={onChange}>
