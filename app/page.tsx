@@ -13,7 +13,7 @@ import React, {useState} from "react";
 import {AppState, useStore} from "@/store";
 import {ResetIcon} from "@radix-ui/react-icons";
 import ToggleSamples from "@/components/toggle-samples";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 const selector = (state: AppState) => ({
   schema: state.schema,
@@ -74,19 +74,20 @@ export default function Dashboard() {
 
                           {properties ? Object.entries(properties).map((property) => {
                             const [propertyKey, propertyValue] = property;
+                            const {title, type} = propertyValue as unknown as { title: string; type: string };
                             return <TableRow key={uuidv4()}>
                               <TableCell>
                                 <Input
                                   id="stock-1"
                                   type="text"
-                                  defaultValue={propertyValue.title}
+                                  defaultValue={title}
                                 />
                               </TableCell>
                               <TableCell>
                                 <Input
                                   id="stock-1"
                                   type="text"
-                                  defaultValue={propertyValue!.type}
+                                  defaultValue={type}
                                 />
                               </TableCell>
                               <TableCell>
@@ -169,7 +170,7 @@ export default function Dashboard() {
                     <CardHeader>
                       <CardTitle>Form Data</CardTitle>
                       <CardDescription>
-                        Hit 'Submit' to view the form data
+                        Hit &apos;Submit&apos; to view the form data
                       </CardDescription>
                     </CardHeader>
                     <CardContent>

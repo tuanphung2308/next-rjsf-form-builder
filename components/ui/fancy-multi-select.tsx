@@ -44,7 +44,7 @@ export function FancyMultiSelect({multiple, items, selected}: Readonly<FancyMult
         input.blur();
       }
     }
-  }, [inputRef.current, setSelectedItems]);
+  }, [setSelectedItems]);
 
   const selectables = items?.filter(framework => !selectedItems.includes(framework)) ?? [];
 
