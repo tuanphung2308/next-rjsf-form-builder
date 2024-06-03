@@ -89,8 +89,8 @@ export default function Dashboard() {
                                                             </TableCell>
                                                             <TableCell>
                                                                 <ToggleGroup
-                                                                    type="single"
-                                                                    defaultValue="s"
+                                                                    type="multiple"
+                                                                    defaultValue={["s"]}
                                                                     variant="outline"
                                                                 >
                                                                     <ToggleGroupItem
