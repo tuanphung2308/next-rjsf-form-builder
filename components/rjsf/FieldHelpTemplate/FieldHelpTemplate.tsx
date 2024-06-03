@@ -5,6 +5,7 @@ import {
   RJSFSchema,
   StrictRJSFSchema,
 } from "@rjsf/utils"
+import {cn} from "@/lib/utils";
 
 /** The `FieldHelpTemplate` component renders any help desired for a field
  *
@@ -22,7 +23,7 @@ export default function FieldHelpTemplate<
   const id = helpId<T>(idSchema)
   return (
     <span
-      className={hasErrors ? "text-red-500" : "text-muted-foreground"}
+      className={cn(hasErrors ? "text-red-500" : "text-muted-foreground", "text-sm")}
       id={id}
     >
       {help}

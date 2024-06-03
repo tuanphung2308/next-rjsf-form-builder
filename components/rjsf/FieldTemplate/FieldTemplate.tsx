@@ -58,11 +58,11 @@ export default function FieldTemplate<
       uiSchema={uiSchema}
       registry={registry}
     >
-      <div className="mb-4 block">
+      <div className="block">
         {displayLabel && (
           <label
             htmlFor={id}
-            className={`pt-2 text-sm font-medium text-muted-foreground mb-4 line-clamp-1 ${
+            className={`pt-2 text-sm font-medium text-muted-foreground mb-2 line-clamp-1 ${
               rawErrors.length > 0 ? "text-red-500" : ""
             }`}
           >

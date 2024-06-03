@@ -66,11 +66,11 @@ export default function ObjectFieldTemplate<
           registry={registry}
         />
       )}
-      <div className="p-0">
+      <div className="flex flex-col">
         {properties.map((element: any, index: number) => (
           <div
             key={index}
-            className={`${element.hidden ? "hidden" : ""} mb-2.5 flex`}
+            className={`${element.hidden ? "hidden" : ""} flex`}
           >
             <div className="w-full"> {element.content}</div>
           </div>
