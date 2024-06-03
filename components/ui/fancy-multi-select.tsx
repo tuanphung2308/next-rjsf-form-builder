@@ -64,7 +64,7 @@ export function FancyMultiSelect({
 
     useEffect(() => {
         if (onValueChange) {
-            onValueChange(selectedItems);
+            onValueChange(selectedItems.map(item => item.value));
         }
     }, [onValueChange, selectedItems]);
 

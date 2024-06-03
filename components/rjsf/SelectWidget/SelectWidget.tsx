@@ -33,9 +33,9 @@ export default function SelectWidget<
 
 
     return (!multiple ?
-            <Select value={selectedIndex} onValueChange={(v) => {
+            <Select required={required} disabled={disabled} value={selectedIndex} onValueChange={(v) => {
                 setSelectedIndex(v);
-                onChange((enumOptions as any)[v]);
+                onChange(v);
             }}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder={placeholder}/>
