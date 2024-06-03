@@ -31,11 +31,10 @@ export default function SelectWidget<
         false,
     ) as unknown as string);
 
-
     return (!multiple ?
             <Select required={required} disabled={disabled} value={selectedIndex} onValueChange={(v) => {
                 setSelectedIndex(v);
-                onChange(v);
+                onChange((enumOptions as any)[v].value);
             }}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder={placeholder}/>
