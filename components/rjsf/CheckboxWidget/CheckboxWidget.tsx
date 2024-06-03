@@ -74,7 +74,7 @@ export default function CheckboxWidget<
                   required={required}
                   disabled={disabled || readonly}
                   autoFocus={autofocus}
-                  onChange={onChange}
+                  onCheckedChange={onChange}
                   defaultChecked={typeof value !== "undefined"}
         />
         <label
