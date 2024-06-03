@@ -18,7 +18,7 @@ export default function ErrorList<
 
     return (
         <Alert className="mb-4">
-            <OctagonAlert size={16}/>
+            <OctagonAlert size={14} className="!top-3"/>
             <AlertTitle>
                 {translateString(TranslatableString.ErrorsLabel)}
             </AlertTitle>
