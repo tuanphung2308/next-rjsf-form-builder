@@ -1,15 +1,2 @@
-# Archiving this since a port of shadcn theme for rjsf is WIP
-
-### Todo List
-- [x] Basic form behaviour
-- [x] Select/Multiselect behaviour
-- [ ] Alternate style for date/datetime/time select
-- [ ] JSON formatter on right panel field
-- [ ] Resize icon for cleaner look
-- [ ] Form builder description field
-- [ ] Form builder dropdown type select
-- [ ] Form builder add field
-- [ ] Form builder required field
-- [ ] Form builder validator
-- [ ] Form builder add nested object
-- [ ] Dark mode toggle
+# OFFICIAL THEME FOR SHADCN RJSF COMING HERE: https://github.com/rjsf-team/react-jsonschema-form/pull/4520
+Using v5, look for this example repo: https://github.com/tuanphung2308/react-jsonschema-form-shadcn-boilerplate
